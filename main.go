@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 )
 
 const (
@@ -11,7 +12,17 @@ const (
 
 // generateRandomElements generates random elements.
 func generateRandomElements(size int) []int {
-	// ваш код здесь
+	
+	if size <= 0 {
+		return []int{}
+	}
+
+	numbers := make([]int, size)
+	for i := range numbers {
+		numbers[i] = rand.Intn(1000)
+	}
+
+	return numbers
 }
 
 // maximum returns the maximum number of elements.
