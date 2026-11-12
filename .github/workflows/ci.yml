@@ -22,7 +22,12 @@ jobs:
         with:
           go-version-file: go.mod
           cache: false
-      - run: go test .
+      - name: Test maximum
+        run: make test-max
+      - name: Test maxChunks
+        run: make test-chunks
+      - name: Test all
+        run: make test
 
   build:
     needs: test
@@ -33,7 +38,7 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
-      - run: go build .
+      - run: make build
 
   run:
     needs: build
@@ -44,4 +49,4 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
-      - run: go run .
+      - run: make run
