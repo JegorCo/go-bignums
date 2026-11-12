@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"sync"
 )
 
 const (
@@ -27,12 +28,50 @@ func generateRandomElements(size int) []int {
 
 // maximum returns the maximum number of elements.
 func maximum(data []int) int {
-	// ваш код здесь
+
+	if len(data) == 0 {
+		return 0
+	}
+
+	max := data[0]
+
+	for _, number := range data[1:] {
+		if number > max {
+			max = number
+		}
+	}
+
+	return max
+
 }
 
 // maxChunks returns the maximum number of elements in a chunks.
 func maxChunks(data []int) int {
-	// ваш код здесь
+	if len(data) == 0 {
+		return 0
+	}
+
+	maxValues := make([]int, CHUNKS)
+	chunkSize := len(data) / CHUNKS
+
+	var wg sync.WaitGroup
+
+	for i:=0; i < CHUNKS; i++ {
+		end = len(data)
+	}
+
+	// Начальное значение для максимума чанка
+	maxValues[i] = data[0]
+
+	wg.Add(1)
+
+	go func(index int, part []int) {
+		defer wg.Done()
+
+		if len(part) == 0 {
+			return nil
+		}
+	}
 }
 
 func main() {
